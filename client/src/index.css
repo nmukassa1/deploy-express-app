@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#hero{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@layer utilities{
+    .button{@apply bg-black text-white px-4 py-2 rounded-md cursor-pointer}
+    .input{@apply border-2 rounded-md px-2 focus:outline-none mr-6}
+}
