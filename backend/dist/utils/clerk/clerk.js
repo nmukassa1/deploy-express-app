@@ -7,4 +7,4 @@ exports.clerkClient = void 0;
 const backend_1 = require("@clerk/backend");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-exports.clerkClient = (0, backend_1.createClerkClient)({ secretKey: process.env.CLERK_SECRET_KEY });
+exports.clerkClient = (0, backend_1.createClerkClient)({ secretKey: process.env.CLERK_SECRET_KEY_DEV || process.env.CLERK_SECRET_KEY_PRODUCTION });

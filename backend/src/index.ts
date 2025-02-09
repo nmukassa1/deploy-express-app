@@ -16,13 +16,13 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
+app.use(cors({ origin: process.env.CORS_ORIGIN_PRODUCTION || process.env.CORS_ORIGIN_DEV, credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(clerkMiddleware({
-  secretKey: process.env.CLERK_SECRET_KEY,
-  publishableKey: process.env.CLERK_PUBLISHABLE_KEY
+  secretKey: process.env.CLERK_SECRET_KEY_DEV ||process.env.CLERK_SECRET_KEY_PRODUCTION ,
+  publishableKey: process.env.CLERK_PUBLISHABLE_KEY_DEV || process.env.CLERK_PUBLISHABLE_KEY_PRODUCTION,
 }));
 
 // Serve static frontend

@@ -17,13 +17,13 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({ origin: process.env.CORS_ORIGIN, credentials: true }));
+app.use((0, cors_1.default)({ origin: process.env.CORS_ORIGIN_PRODUCTION || process.env.CORS_ORIGIN_DEV, credentials: true }));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
 app.use((0, express_2.clerkMiddleware)({
-    secretKey: process.env.CLERK_SECRET_KEY,
-    publishableKey: process.env.CLERK_PUBLISHABLE_KEY
+    secretKey: process.env.CLERK_SECRET_KEY_DEV || process.env.CLERK_SECRET_KEY_PRODUCTION,
+    publishableKey: process.env.CLERK_PUBLISHABLE_KEY_DEV || process.env.CLERK_PUBLISHABLE_KEY_PRODUCTION,
 }));
 // Serve static frontend
 app.use(express_1.default.static(path_1.default.join(__dirname, "../public"))); // ✅ Correct path
