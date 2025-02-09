@@ -43,7 +43,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/" signInFallbackRedirectUrl="http://localhost:5173/dashboard" signUpFallbackRedirectUrl="http://localhost:5173/dashboard" >
+     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/" signInFallbackRedirectUrl="https://nyahmukassa/dashboard" signUpFallbackRedirectUrl="https://nyahmukassa/dashboard" >
       <RouterProvider router={router} />
      </ClerkProvider>
   </StrictMode>,
