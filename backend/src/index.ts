@@ -15,13 +15,13 @@ const app: Application = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.json());
 app.use(cors({ origin: process.env.CORS_ORIGIN_PRODUCTION || process.env.CORS_ORIGIN_DEV, credentials: true }));
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(clerkMiddleware({
-  secretKey: process.env.CLERK_SECRET_KEY_DEV ||process.env.CLERK_SECRET_KEY_PRODUCTION ,
+  secretKey: process.env.CLERK_SECRET_KEY_DEV || process.env.CLERK_SECRET_KEY_PRODUCTION ,
   publishableKey: process.env.CLERK_PUBLISHABLE_KEY_DEV || process.env.CLERK_PUBLISHABLE_KEY_PRODUCTION,
 }));
 
@@ -37,7 +37,9 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "public", "index.html")); // ✅ Correct path resolution
 });
 
+
+
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT} jhhhg `);
+  console.log(`Server is running on http://localhost:${PORT} `);
 });

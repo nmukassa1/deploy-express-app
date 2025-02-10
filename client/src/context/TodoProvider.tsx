@@ -22,6 +22,8 @@ export const TodosProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     const fetchTodos = async () => {
       const res = await api("/todos");
+      console.log(res);
+      
       setTodos(res.data);
     }
     fetchTodos();
