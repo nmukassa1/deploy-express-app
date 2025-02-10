@@ -14,6 +14,14 @@ dotenv.config();
 const app: Application = express();
 const PORT = process.env.PORT || 3000;
 
+const clerkSecretKey = process.env.CLERK_SECRET_KEY_DEV;
+
+if (!clerkSecretKey) {
+  console.log(8888);
+  
+  // throw new Error('Missing Clerk Secret Key. Go to https://dashboard.clerk.com and get your key for your instance.');
+}
+
 // Middleware
 app.use(cors({ origin: process.env.CORS_ORIGIN_PRODUCTION || process.env.CORS_ORIGIN_DEV, credentials: true }));
 app.use(express.json());
@@ -27,6 +35,8 @@ app.use(clerkMiddleware({
 
 // Serve static frontend
 app.use(express.static(path.join(__dirname, "../public"))); // ✅ Correct path
+
+
 
 // API Routes
 app.use("/api", todoRoute);

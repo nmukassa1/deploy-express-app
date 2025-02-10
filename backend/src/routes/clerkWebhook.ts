@@ -31,9 +31,13 @@ router.post("/store-user", requireAuth(), async (req: Request, res: Response) =>
                     lastName: lastName ?? '',
                 },
             });
+
+            res.status(200).json({message: 'User stored successfully'});
+            return
         }
 
-        console.log(userExists);
+        res.status(200).json({message: 'User already exists in database'});
+        return
     } catch(error){
         console.log(error);
         return
